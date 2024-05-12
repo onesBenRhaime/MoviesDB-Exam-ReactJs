@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Greyhound",
+    "year": "2020",
+    "img": "placeholder.jpg",
+    "genre": "drama",
+    "description": "Le lorem ipsum est, en imprimerie…… ",
+    "note": {
+      "count": 0,
+      "total": 0
+    }
+  },
+  {
+    "id": 2,
+    "title": "Green Book",
+    "year": "2018",
+    "img": "placeholder.jpg",
+    "genre": "comedy",
+    "description": "Le lorem ipsum est, en imprimerie…….",
+    "note": {
+      "count": 0,
+      "total": 0
+    }
+  }
+]

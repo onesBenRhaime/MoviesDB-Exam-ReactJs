@@ -1,0 +1,53 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "movies": [
+    {
+      "id": 1,
+      "title": "Greyhound",
+      "year": "2020",
+      "img": "placeholder.jpg",
+      "genre": "drama",
+      "description": "Le lorem ipsum est, en imprimerie…… ",
+      "note": 0
+    },
+    {
+      "id": 2,
+      "title": "Green Book",
+      "year": "2018",
+      "img": "placeholder.jpg",
+      "genre": "comedy",
+      "description": "Le lorem ipsum est, en imprimerie…….",
+      "note": {
+        "count": 0,
+        "total": 0
+      }
+    }
+  ],
+  "Wishlist": [
+    {
+      "id": 1,
+      "title": "Greyhound",
+      "year": "2020",
+      "img": "placeholder.jpg",
+      "genre": "drama",
+      "description": "Le lorem ipsum est, en imprimerie…… ",
+      "note": 0
+    }
+  ]
+}

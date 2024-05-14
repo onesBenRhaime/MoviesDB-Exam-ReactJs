@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { Alert, Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import movies from "../movies.json";
-import { useDispatch } from "react-redux";
-import { add, get } from "../services/movieServices";
-import { addEvent } from "../redux/actions";
+import { add, addWishlist, get, getWishlist } from "../services/serviceData";
+import { addData, addDataWishlist } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import imgg from "../assets/placeholder.jpg";
 
-export default function Movie(props) {
+function Movie(props) {
 	const [movie, setMovie] = useState(props.movie);
+	const movies = useSelector((state) => state.data.data);
 	const [rate, setRate] = useState(0);
 
 	const [timer, setTimer] = useState(false);
 	const [msg, setMsg] = useState("");
 	const dispatch = useDispatch();
 
-	const src = `images/${movie.img}`;
 	const handleRate = (e) => {
 		if (e.target.value >= 1 && e.target.value <= 5) {
 			setRate(e.target.value);
@@ -42,13 +42,23 @@ export default function Movie(props) {
 	};
 
 	const addToWishlist = async () => {
-		const wishlist = await get(movie.id);
-		if (wishlist) {
-			setMsg("Movie already exists");
-		} else {
-			const res = await add(movie);
-			dispatch(addEvent(res.data));
-			setMsg("Added to wishlist");
+		try {
+			const wishlist = await getWishlist(movie.id);
+			if (wishlist.data) {
+				setMsg("Movie already exists");
+			} else {
+				const res = await addWishlist(movie);
+				dispatch(addDataWishlist(res.data));
+				setMsg("Added to wishlist");
+			}
+		} catch (error) {
+			if (error.response && error.response.status === 404) {
+				const res = await addWishlist(movie);
+				dispatch(addDataWishlist(res.data));
+				setMsg("Added to wishlist");
+			} else {
+				setMsg("An error occurred while adding to wishlist");
+			}
 		}
 		setTimer(true);
 		setTimeout(() => {
@@ -61,7 +71,7 @@ export default function Movie(props) {
 		<>
 			{timer && <Alert variant="success">{msg}</Alert>}
 			<Card>
-				<Card.Img variant="top" src={src} height={250} />
+				<Card.Img variant="top" src={imgg} height={250} />
 				<Card.Body>
 					<Card.Title>
 						<NavLink to={`${movie.title}`}> {movie.title}</NavLink>
@@ -70,8 +80,8 @@ export default function Movie(props) {
 					<Card.Text>genre: {movie.genre}</Card.Text>
 					<Card.Text>description: {movie.description}</Card.Text>
 					<Card.Text>
-						Movie rating:{" "}
-						<input type="number" onChange={(e) => handleRate(e)} />{" "}
+						Movie rating:
+						<input type="number" onChange={(e) => handleRate(e)} />
 						<button type="submit" onClick={AddRating}>
 							Add
 						</button>
@@ -92,3 +102,5 @@ export default function Movie(props) {
 		</>
 	);
 }
+
+export default Movie;

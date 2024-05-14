@@ -5,19 +5,19 @@ class NotFound extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showRedirectMessage: false,
+			showRedirectMessage: true,
 		};
 	}
 
 	componentDidMount() {
 		// 3sec
 		this.redirectTimer = setTimeout(() => {
-			this.setState({ showRedirectMessage: true });
+			this.setState({ showRedirectMessage: false });
 		}, 3000);
 	}
 
 	componentWillUnmount() {
-		// Nettoyer le timer avant que le composant ne soit démonté
+		// Nettoyer  avant demonte
 		clearTimeout(this.redirectTimer);
 	}
 
@@ -26,7 +26,7 @@ class NotFound extends Component {
 			<>
 				<h1 className=" py-5 mt-5 text-center">Not Found</h1>
 				{this.state.showRedirectMessage && (
-					<Alert variant="danger"> Redirect to Movies page</Alert>
+					<Alert variant="danger"> This page does not exist</Alert>
 				)}
 				;
 			</>

@@ -1,10 +1,8 @@
+import { applyMiddleware, combineReducers, createStore } from "redux";
 
-import {applyMiddleware, combineReducers, createStore} from 'redux'
-import { counterReducer } from './reducers'
-import logger from 'redux-logger';
-import { eventReducer } from './eventReducer';
+import logger from "redux-logger";
+import { dataReducer } from "./dataReducer";
 const reducers = combineReducers({
-    count: counterReducer,
-    event:eventReducer
-})
-export default createStore(reducers,applyMiddleware(logger));
+	data: dataReducer,
+});
+export default createStore(reducers, applyMiddleware(logger));

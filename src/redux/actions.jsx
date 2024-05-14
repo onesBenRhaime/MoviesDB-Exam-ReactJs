@@ -1,30 +1,36 @@
+export const getData = (events) => ({
+	type: "getData",
+	payload: events,
+});
 
+export const addData = (item) => ({
+	type: "addData",
+	payload: item,
+});
 
-export const increment = (step) => ({
-    type: 'incrementType',
-    payload:step   
-})
-export const decrement = (step) => ({
-    type: 'decrementType',
-    payload:step
-})
+export const updateData = (item) => ({
+	type: "updateData",
+	payload: item,
+});
 
-export const getEvents = (events) => ({
-    type: 'getevents',
-    payload : events
-})
+export const deletData = (id) => ({
+	type: "deleteData",
+	payload: id,
+});
 
-export const addEvent = (item) => ({
-    type: 'addevent',
-    payload: item
-})
+export const addDataWishlist = (list) => ({
+	type: "addDataWishlist",
+	payload: list,
+});
+export const getDataWishlist = (list) => ({
+	type: "getDataWishlist",
+	payload: list,
+});
 
-export const updateEvent = (item) => ({
-    type: 'updateevent',
-    payload: item
-})
-
-export const deleteEvent = (id) => ({
-    type: 'deleteevent',
-    payload : id
-})
+export const deleteallWishlist = () => ({
+	type: "deleteallWishlist",
+});
+export const deleteDataWishlist = (id) => ({
+	type: "deleteDataWishlist",
+	payload: id,
+});

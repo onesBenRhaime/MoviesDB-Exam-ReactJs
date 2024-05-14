@@ -19,7 +19,7 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    border-bottom: 2px solid transparent; /* Bordure transparente par défaut */
+    border-bottom: 2px solid transparent; 
   }
   
   .navigation ul li a:hover {
@@ -27,6 +27,6 @@
   }
   
   .navigation ul li a.active {
-    border-bottom: 2px solid #ff0000; /* Couleur de la bordure pour le lien actif */
+    border-bottom: 2px solid #ff0000; 
   }
   
